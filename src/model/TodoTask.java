@@ -35,6 +35,11 @@ public class TodoTask {
 		this.completed = completed;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return "Action: " + description + " , until " + dateDue + " , " + (completed ? "completed" : "not completed");
+	}
 	
 	
 }
