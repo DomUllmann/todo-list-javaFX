@@ -38,7 +38,8 @@ public class TodoTask {
 	@Override
 	public String toString()
 	{
-		return "Action: " + description + " , until " + dateDue + " , " + (completed ? "completed" : "not completed");
+		String[] dateArray = dateDue.toString().split("-");
+		return description + ((dateDue == null)?"":" , before " + dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0]);// + " , " + (completed ? "completed" : "not completed");
 	}
 	
 	
