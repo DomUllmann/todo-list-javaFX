@@ -7,15 +7,25 @@ public class TodoTask {
 	private LocalDate dateDue;
 	private String description;
 	private boolean completed;
+	private boolean urgent;
 	
 	
-	public TodoTask(String description, LocalDate date)
+	public TodoTask(String description, LocalDate date, boolean urgent)
 	{
 		this.description = description;
 		this.dateDue = date;
 		this.completed = false;
+		this.urgent = urgent;
 	}
 	
+	public boolean isUrgent() {
+		return urgent;
+	}
+
+	public void setUrgent(boolean urgent) {
+		this.urgent = urgent;
+	}
+
 	public LocalDate getDateDue() {
 		return dateDue;
 	}
@@ -38,8 +48,13 @@ public class TodoTask {
 	@Override
 	public String toString()
 	{
-		String[] dateArray = dateDue.toString().split("-");
-		return description + ((dateDue == null)?"":" , before " + dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0]);// + " , " + (completed ? "completed" : "not completed");
+		String[] dateArray = null;
+		if(dateDue != null)
+		{
+			dateArray = dateDue.toString().split("-");
+		}
+		return ((dateArray == null)?"------------ ": dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0]) + " | " + (urgent ? "!!! ":"") + description;// + " , " + (completed ? "completed" : "not completed");
+		//return (urgent ? "!!! ":"")+ description + ((dateArray == null)?"":" , before " + dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0]);// + " , " + (completed ? "completed" : "not completed");
 	}
 	
 	
