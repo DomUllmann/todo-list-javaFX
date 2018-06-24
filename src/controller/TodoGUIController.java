@@ -144,6 +144,8 @@ public class TodoGUIController {
 	void addTaskClicked(MouseEvent event) 
 	{
 		urgentCheckbox.setDisable(false);
+		taskList.getSelectionModel().clearSelection();
+		taskListDone.getSelectionModel().clearSelection();
 	}
 
 	@FXML
@@ -182,8 +184,6 @@ public class TodoGUIController {
 
 	private void addTaskCommit()
 	{
-		System.out.println("ADD TASK");
-		errorLabel.setText("");
 
 		list.add(new TodoTask(descriptionText.getText(), 
 				(noDueDateCheckbox.isSelected() ? null : datePicker.getValue()), 
@@ -192,7 +192,6 @@ public class TodoGUIController {
 		taskList.setItems(list);
 
 		char[] arr = descriptionText.getText().toCharArray();
-		System.out.println(arr.length);
 		descriptionText.setText("");
 
 		toggleButtons(list.isEmpty() && listDone.isEmpty());
@@ -242,10 +241,23 @@ public class TodoGUIController {
 		// Iterate over the arraylist to find if there are any duplicate tasks
 		for(int i = 0; i < list.size(); i++)
 		{
-			if(descriptionText.getText().equals(list.get(i).getDescription()) && 
-					datePicker.getValue().isEqual(list.get(i).getDateDue()))
+			if(descriptionText.getText().equals(list.get(i).getDescription()))
 			{
-				return true;
+				
+				if(datePicker.isDisabled())
+				{
+					if(list.get(i).getDateDue() == null)
+					{
+						return true;
+					}
+				}else
+				{
+					if(list.get(i).getDateDue() != null && 
+					   list.get(i).getDateDue().isEqual(datePicker.getValue()))
+					{
+						return true;
+					}
+				}
 			}
 		}
 		return false;
