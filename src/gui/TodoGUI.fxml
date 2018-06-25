@@ -9,32 +9,32 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="636.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TodoGUIController">
+<SplitPane fx:id="mainPane" dividerPositions="0.5" orientation="VERTICAL" prefHeight="434.0" prefWidth="817.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TodoGUIController">
    <items>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="107.0" prefWidth="958.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="107.0" prefWidth="815.0">
          <children>
-            <TextField fx:id="descriptionText" focusTraversable="false" layoutX="14.0" layoutY="10.0" onMouseClicked="#addTaskClicked" prefHeight="25.0" prefWidth="521.0" promptText="Write the description of your new to-do task here ..." />
-            <DatePicker fx:id="datePicker" focusTraversable="false" layoutX="551.0" layoutY="10.0" prefHeight="25.0" prefWidth="195.0" />
-            <Button fx:id="addTaskButton" focusTraversable="false" layoutX="762.0" layoutY="10.0" mnemonicParsing="false" onAction="#addNewTask" prefHeight="25.0" prefWidth="187.0" text="Add new task" />
-            <Button fx:id="completeButton" focusTraversable="false" layoutX="762.0" layoutY="41.0" mnemonicParsing="false" onAction="#markAsComplete" prefHeight="25.0" prefWidth="187.0" text="Mark as complete" />
+            <TextField fx:id="descriptionText" focusTraversable="false" layoutX="14.0" layoutY="10.0" onMouseClicked="#addTaskClicked" prefHeight="25.0" prefWidth="483.0" promptText="Write the description of your new to-do task here ..." />
+            <DatePicker fx:id="datePicker" focusTraversable="false" layoutX="509.0" layoutY="10.0" prefHeight="25.0" prefWidth="138.0" />
+            <Button fx:id="addTaskButton" focusTraversable="false" layoutX="660.0" layoutY="10.0" mnemonicParsing="false" onAction="#addNewTask" prefHeight="25.0" prefWidth="138.0" text="Add new task" />
+            <Button fx:id="completeButton" focusTraversable="false" layoutX="660.0" layoutY="41.0" mnemonicParsing="false" onAction="#markAsComplete" prefHeight="25.0" prefWidth="138.0" text="Mark as complete" />
             <Label fx:id="errorLabel" layoutX="14.0" layoutY="45.0" prefHeight="17.0" prefWidth="311.0" />
-            <Button fx:id="deleteButton" focusTraversable="false" layoutX="762.0" layoutY="73.0" mnemonicParsing="false" onAction="#deleteTask" prefHeight="25.0" prefWidth="187.0" text="Delete" />
-            <CheckBox fx:id="noDueDateCheckbox" focusTraversable="false" layoutX="551.0" layoutY="45.0" mnemonicParsing="false" onAction="#noDueDateSelected" text="Task with no due date" />
-            <CheckBox fx:id="urgentCheckbox" focusTraversable="false" layoutX="551.0" layoutY="77.0" mnemonicParsing="false" text="Mark as urgent" />
+            <Button fx:id="deleteButton" focusTraversable="false" layoutX="660.0" layoutY="73.0" mnemonicParsing="false" onAction="#deleteTask" prefHeight="25.0" prefWidth="138.0" text="Delete" />
+            <CheckBox fx:id="noDueDateCheckbox" focusTraversable="false" layoutX="509.0" layoutY="45.0" mnemonicParsing="false" onAction="#noDueDateSelected" text="Task with no due date" />
+            <CheckBox fx:id="urgentCheckbox" focusTraversable="false" layoutX="509.0" layoutY="73.0" mnemonicParsing="false" onAction="#urgentSelected" text="Mark as urgent" />
          </children>
       </AnchorPane>
       <SplitPane fx:id="splitPane" dividerPositions="0.5" prefHeight="521.0" prefWidth="873.0" SplitPane.resizableWithParent="false">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                <children>
-                  <ListView fx:id="taskList" layoutY="24.0" maxHeight="497.0" maxWidth="476.0" minHeight="497.0" minWidth="476.0" onMouseClicked="#listClicked" prefHeight="497.0" prefWidth="476.0" />
+                  <ListView fx:id="taskList" layoutY="23.0" maxHeight="497.0" maxWidth="476.0" minHeight="297.0" minWidth="405.0" onMouseClicked="#listClicked" prefHeight="297.0" prefWidth="405.0" />
                   <Label layoutX="14.0" layoutY="6.0" text="To-Do" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                <children>
                   <Label layoutX="14.0" layoutY="6.0" text="Completed" />
-                  <ListView fx:id="taskListDone" layoutY="23.0" maxHeight="497.0" maxWidth="476.0" minHeight="497.0" minWidth="476.0" onMouseClicked="#doneListClicked" prefHeight="497.0" prefWidth="476.0" />
+                  <ListView fx:id="taskListDone" layoutY="23.0" maxHeight="497.0" maxWidth="476.0" minHeight="297.0" minWidth="405.0" onMouseClicked="#doneListClicked" prefHeight="297.0" prefWidth="405.0" />
                </children>
             </AnchorPane>
         </items>

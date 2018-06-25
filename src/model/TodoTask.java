@@ -1,23 +1,35 @@
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
-public class TodoTask {
-	private LocalDate dateDue;
+
+@SuppressWarnings("serial")
+public class TodoTask implements Serializable {
+	
+	private LocalDate dueDate;
+	private LocalDate completionDate;
 	private String description;
 	private boolean completed;
 	private boolean urgent;
 	
-	
 	public TodoTask(String description, LocalDate date, boolean urgent)
 	{
 		this.description = description;
-		this.dateDue = date;
+		this.dueDate = date;
+		this.completionDate = null;
 		this.completed = false;
 		this.urgent = urgent;
 	}
 	
+	public LocalDate getCompletionDate() {
+		return completionDate;
+	}
+
+	public void setCompletionDate(LocalDate completionDate) {
+		this.completionDate = completionDate;
+	}
+
 	public boolean isUrgent() {
 		return urgent;
 	}
@@ -26,11 +38,11 @@ public class TodoTask {
 		this.urgent = urgent;
 	}
 
-	public LocalDate getDateDue() {
-		return dateDue;
+	public LocalDate getDueDate() {
+		return dueDate;
 	}
-	public void setDateDue(LocalDate dateDue) {
-		this.dateDue = dateDue;
+	public void setDueDate(LocalDate dueDate) {
+		this.dueDate = dueDate;
 	}
 	public String getDescription() {
 		return description;
@@ -49,13 +61,38 @@ public class TodoTask {
 	public String toString()
 	{
 		String[] dateArray = null;
-		if(dateDue != null)
+		String[] completionDateArray = null;
+		if(dueDate != null)
 		{
-			dateArray = dateDue.toString().split("-");
+			dateArray = dueDate.toString().split("-");
 		}
-		return ((dateArray == null)?"------------ ": dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0]) + " | " + (urgent ? "!!! ":"") + description;// + " , " + (completed ? "completed" : "not completed");
-		//return (urgent ? "!!! ":"")+ description + ((dateArray == null)?"":" , before " + dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0]);// + " , " + (completed ? "completed" : "not completed");
+		if(completionDate != null)
+		{
+			completionDateArray = completionDate.toString().split("-");
+		}
+		
+		if(urgent)
+		{
+			if(completed)
+			{
+				return completionDateArray[2] + "/" + completionDateArray[1] + "/" + completionDateArray[0] +
+					   " | URGENT | " + description;
+			}else
+			{
+				return "URGENT | " + description;
+			}
+		}else
+		{
+			if(completed)
+			{
+				return completionDateArray[2] + "/" + completionDateArray[1] + "/" + completionDateArray[0] + 
+					   " | "+ description + ((dateArray == null)?"": "   (due " + 
+				       dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0] + ")");
+			}else
+			{
+				return ((dateArray == null)?"": dateArray[2] + "/" + dateArray[1] + "/" + dateArray[0] + " | ") +
+					   description;
+			}
+		}
 	}
-	
-	
 }
