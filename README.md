@@ -4,8 +4,8 @@ The user can create, delete and mark tasks as complete/incomplete. Tasks can hav
 JUnit tests testing core functionality of the application.
 
 
-Future improvements:
--Task editing
--Grouping tasks
--Having multiple profiles
+Future improvements:  
+-Task editing  
+-Grouping tasks  
+-Having multiple profiles  
 -GUI testing (with JemmyFX or TestFX)
