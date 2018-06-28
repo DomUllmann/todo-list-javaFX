@@ -33,10 +33,10 @@ class TestBasicFunctionality {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		app.addNewTask(new TodoTask("Task1", LocalDate.now(), false));
-		app.addNewTask(new TodoTask("Task2", LocalDate.now(), false));
-		app.addNewTask(new TodoTask("Task3", LocalDate.now(), false));
-		app.addNewTask(new TodoTask("Task4", LocalDate.now(), false));
+		app.addNewTask(new TodoTask("Task1", LocalDate.now().plusDays(3), false));
+		app.addNewTask(new TodoTask("Task2", LocalDate.now().plusDays(21), false));
+		app.addNewTask(new TodoTask("Task3", LocalDate.now().plusDays(5), false));
+		app.addNewTask(new TodoTask("Task4", LocalDate.now().plusWeeks(3), false));
 		app.addNewTask(new TodoTask("Task5", LocalDate.now(), false));
 		app.sortListByDate(app.getList());
 	}
@@ -53,10 +53,10 @@ class TestBasicFunctionality {
 		
 		app.reset();
 		assertEquals(0, app.getList().size());
-		app.addNewTask(new TodoTask("Task1", LocalDate.now().plusDays(3), false));
-		app.addNewTask(new TodoTask("Task2", LocalDate.now().plusDays(21), false));
-		app.addNewTask(new TodoTask("Task3", LocalDate.now().plusDays(5), false));
-		app.addNewTask(new TodoTask("Task4", LocalDate.now().plusWeeks(3), false));
+		app.addNewTask(new TodoTask("Task1", LocalDate.now(), false));
+		app.addNewTask(new TodoTask("Task2", LocalDate.now(), false));
+		app.addNewTask(new TodoTask("Task3", LocalDate.now(), false));
+		app.addNewTask(new TodoTask("Task4", LocalDate.now(), false));
 		app.addNewTask(new TodoTask("Task5", LocalDate.now(), false));
 		assertEquals(5, app.getList().size());
 		

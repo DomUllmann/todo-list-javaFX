@@ -302,8 +302,6 @@ public class TodoGUIController {
             objOps = new ObjectOutputStream(ops);
             objOps.writeObject(data);
             objOps.flush();
-	    	System.out.println("saved!");
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -340,8 +338,8 @@ public class TodoGUIController {
         } finally {
             try {
                 if(objIs != null) objIs.close();
-            } catch (Exception ex){
-                 
+            } catch (Exception e){
+                e.printStackTrace();
             }
         }
     }
@@ -391,7 +389,6 @@ public class TodoGUIController {
 
 	private boolean isDuplicate()
 	{
-		// Iterate over the arraylist to find if there are any duplicate tasks
 		for(int i = 0; i < list.size(); i++)
 		{
 			if(descriptionText.getText().equals(list.get(i).getDescription()))
