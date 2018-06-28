@@ -15,7 +15,7 @@
          <children>
             <TextField fx:id="descriptionText" focusTraversable="false" layoutX="14.0" layoutY="10.0" onMouseClicked="#addTaskClicked" prefHeight="25.0" prefWidth="483.0" promptText="Write the description of your new to-do task here ..." />
             <DatePicker fx:id="datePicker" focusTraversable="false" layoutX="509.0" layoutY="10.0" prefHeight="25.0" prefWidth="138.0" />
-            <Button fx:id="addTaskButton" focusTraversable="false" layoutX="660.0" layoutY="10.0" mnemonicParsing="false" onAction="#addNewTask" prefHeight="25.0" prefWidth="138.0" text="Add new task" />
+            <Button id="addTaskButton" fx:id="addTaskButton" focusTraversable="false" layoutX="660.0" layoutY="10.0" mnemonicParsing="false" onAction="#addNewTask" prefHeight="25.0" prefWidth="138.0" text="Add new task" />
             <Button fx:id="completeButton" focusTraversable="false" layoutX="660.0" layoutY="41.0" mnemonicParsing="false" onAction="#markAsComplete" prefHeight="25.0" prefWidth="138.0" text="Mark as complete" />
             <Label fx:id="errorLabel" layoutX="14.0" layoutY="45.0" prefHeight="17.0" prefWidth="311.0" />
             <Button fx:id="deleteButton" focusTraversable="false" layoutX="660.0" layoutY="73.0" mnemonicParsing="false" onAction="#deleteTask" prefHeight="25.0" prefWidth="138.0" text="Delete" />
