@@ -8,11 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-public class Main extends Application {
-	
+public class Main extends Application 
+{
 	@Override
-	public void start(Stage primaryStage) throws Exception {
-
+	public void start(Stage primaryStage) throws Exception 
+	{
 		String fxmlPath = "/gui/ToDoGUI.fxml";
 		URL location = getClass().getResource(fxmlPath);
 		FXMLLoader loader = new FXMLLoader(location);
@@ -25,7 +25,8 @@ public class Main extends Application {
 		primaryStage.show();
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
 		launch(args);
 	}
 }

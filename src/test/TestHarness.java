@@ -7,8 +7,8 @@ import java.util.Comparator;
 
 import model.TodoTask;
 
-public class TestHarness {
-
+public class TestHarness
+{
 	private ArrayList<TodoTask> list;
 	private ArrayList<TodoTask> listDone;
 	private String errorLabel;
@@ -71,12 +71,10 @@ public class TestHarness {
 	
 	private boolean isDuplicate(TodoTask task)
 	{
-		// Iterate over the arraylist to find if there are any duplicate tasks
 		for(int i = 0; i < list.size(); i++)
 		{
 			if(task.getDescription().equals(list.get(i).getDescription()))
 			{
-				
 				if(noDueDateSelected)
 				{
 					if(list.get(i).getDueDate() == null)
@@ -98,10 +96,11 @@ public class TestHarness {
 	
 	public void sortListByDate(ArrayList<TodoTask> list)
 	{
-		Collections.sort(list, new Comparator<TodoTask>() {
+		Collections.sort(list, new Comparator<TodoTask>()
+		{
 			@Override
-			public int compare(TodoTask t1, TodoTask t2) {
-
+			public int compare(TodoTask t1, TodoTask t2) 
+			{
 				if(t1.isUrgent())
 				{
 					return -1;
@@ -168,7 +167,6 @@ public class TestHarness {
 			listDone.add(task);
 			list.remove(position);
 			sortListByDate(listDone);
-			
 		}else
 		{
 			if(listDone.size() == 0)
@@ -190,23 +188,6 @@ public class TestHarness {
 			sortListByDate(list);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	public ArrayList<TodoTask> getList() {
 		return list;

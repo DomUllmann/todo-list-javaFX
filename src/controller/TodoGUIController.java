@@ -39,41 +39,30 @@ import javafx.scene.paint.Color;
 import model.AppData;
 import model.TodoTask;
 
-public class TodoGUIController {
-
+public class TodoGUIController 
+{
     @FXML
     private SplitPane mainPane;
-	
 	@FXML 
 	private TextField descriptionText; 
-
 	@FXML 
 	private DatePicker datePicker; 
-
 	@FXML 
 	private Button addTaskButton;
-
 	@FXML 
-	private Button completeButton; // Value injected by FXMLLoader
-
+	private Button completeButton; 
 	@FXML 
-	private Button deleteButton; // Value injected by FXMLLoader
-
+	private Button deleteButton; 
 	@FXML 
-	private Label errorLabel; // Value injected by FXMLLoader
-
+	private Label errorLabel;
 	@FXML 
 	private ListView<TodoTask> taskList;
-
 	@FXML 
 	private ListView<TodoTask> taskListDone;
-
 	@FXML
 	private CheckBox noDueDateCheckbox;
-
 	@FXML
 	private CheckBox urgentCheckbox;
-
 	@FXML
 	private SplitPane splitPane;
 
@@ -81,7 +70,8 @@ public class TodoGUIController {
 	ObservableList<TodoTask> listDone = FXCollections.observableArrayList();
 
 	@FXML
-	void addNewTask(ActionEvent event) {
+	void addNewTask(ActionEvent event) 
+	{
 		if(addTaskValidate())
 		{
 			addTaskCommit();
@@ -115,26 +105,23 @@ public class TodoGUIController {
 
 		list.add(new TodoTask(descriptionText.getText(), 
 				(noDueDateCheckbox.isSelected() ? null : datePicker.getValue()), 
-				urgentCheckbox.isSelected()));
+				 urgentCheckbox.isSelected()));
 		sortListByDate(list);
 		taskList.setItems(list);
 		descriptionText.setText("");
+		errorLabel.setText("");
 
 		toggleButtons(list.isEmpty() && listDone.isEmpty());
 		datePicker.setDisable(false);
 		noDueDateCheckbox.setSelected(false);
 		noDueDateCheckbox.setDisable(false);
 		urgentCheckbox.setSelected(false);
-		
-		errorLabel.setText("");
-		
-		
 		datePicker.setValue(LocalDate.now());
 	}
 
 	@FXML
-	void markAsComplete(ActionEvent event) {
-
+	void markAsComplete(ActionEvent event) 
+	{
 		TodoTask task = null;
 
 		if(taskList.isFocused())
@@ -174,12 +161,13 @@ public class TodoGUIController {
 	}
 
 	@FXML
-	void deleteTask(ActionEvent event) {
+	void deleteTask(ActionEvent event) 
+	{
 		list.remove(taskList.getSelectionModel().getSelectedItem());
-		taskList.refresh();
-
 		listDone.remove(taskListDone.getSelectionModel().getSelectedItem());
+		taskList.refresh();
 		taskListDone.refresh();
+		
 		toggleButtons(list.isEmpty() && listDone.isEmpty());
 		taskList.getSelectionModel().clearSelection();
 		taskListDone.getSelectionModel().clearSelection();
@@ -195,9 +183,8 @@ public class TodoGUIController {
 		
 		completeButton.setDisable(listDone.isEmpty());
 		deleteButton.setDisable(listDone.isEmpty());
-		
-		taskList.getSelectionModel().clearSelection();
 		urgentCheckbox.setDisable(true);
+		taskList.getSelectionModel().clearSelection();
 	}
 
 	@FXML
@@ -210,9 +197,8 @@ public class TodoGUIController {
 		
 		completeButton.setDisable(list.isEmpty());
 		deleteButton.setDisable(list.isEmpty());
-		
-		taskListDone.getSelectionModel().clearSelection();
 		urgentCheckbox.setDisable(true);
+		taskListDone.getSelectionModel().clearSelection();
 	}
 
 	@FXML
@@ -288,8 +274,8 @@ public class TodoGUIController {
 	/**
 	 *  Helper methods
 	 */
-	public void saveAppData(){
-        
+	public void saveAppData()
+	{
         OutputStream ops = null;
         ObjectOutputStream objOps = null;
         try {
@@ -315,8 +301,8 @@ public class TodoGUIController {
         }
     }
     
-    public void loadAppData(){
-        
+    public void loadAppData()
+    {
         InputStream fileIs = null;
         ObjectInputStream objIs = null;
         try {
@@ -368,7 +354,7 @@ public class TodoGUIController {
 				}
 
 				if( t1.getDueDate().isAfter(t2.getDueDate()) || 
-						t1.getDueDate().isEqual(t2.getDueDate()) )
+					t1.getDueDate().isEqual(t2.getDueDate()) )
 				{
 					return 1;
 				}
@@ -393,7 +379,6 @@ public class TodoGUIController {
 		{
 			if(descriptionText.getText().equals(list.get(i).getDescription()))
 			{
-				
 				if(datePicker.isDisabled())
 				{
 					if(list.get(i).getDueDate() == null)

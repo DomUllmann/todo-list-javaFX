@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 @SuppressWarnings("serial")
-public class AppData implements Serializable{
-
+public class AppData implements Serializable
+{
 	private ArrayList<TodoTask> list;
 	private ArrayList<TodoTask> listDone;
 	
@@ -15,11 +15,13 @@ public class AppData implements Serializable{
 		this.listDone = listDone;
 	}
 
-	public ArrayList<TodoTask> getList() {
+	public ArrayList<TodoTask> getList() 
+	{
 		return list;
 	}
 
-	public ArrayList<TodoTask> getListDone() {
+	public ArrayList<TodoTask> getListDone() 
+	{
 		return listDone;
 	}
 }

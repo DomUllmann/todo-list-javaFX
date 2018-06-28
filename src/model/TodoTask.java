@@ -5,8 +5,8 @@ import java.time.LocalDate;
 
 
 @SuppressWarnings("serial")
-public class TodoTask implements Serializable {
-	
+public class TodoTask implements Serializable 
+{
 	private LocalDate dueDate;
 	private LocalDate completionDate;
 	private String description;
@@ -20,41 +20,6 @@ public class TodoTask implements Serializable {
 		this.completionDate = null;
 		this.completed = false;
 		this.urgent = urgent;
-	}
-	
-	public LocalDate getCompletionDate() {
-		return completionDate;
-	}
-
-	public void setCompletionDate(LocalDate completionDate) {
-		this.completionDate = completionDate;
-	}
-
-	public boolean isUrgent() {
-		return urgent;
-	}
-
-	public void setUrgent(boolean urgent) {
-		this.urgent = urgent;
-	}
-
-	public LocalDate getDueDate() {
-		return dueDate;
-	}
-	public void setDueDate(LocalDate dueDate) {
-		this.dueDate = dueDate;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public boolean isCompleted() {
-		return completed;
-	}
-	public void setCompleted(boolean completed) {
-		this.completed = completed;
 	}
 	
 	@Override
@@ -94,5 +59,55 @@ public class TodoTask implements Serializable {
 					   description;
 			}
 		}
+	}
+	
+	public LocalDate getCompletionDate()
+	{
+		return completionDate;
+	}
+
+	public void setCompletionDate(LocalDate completionDate) 
+	{
+		this.completionDate = completionDate;
+	}
+
+	public boolean isUrgent() 
+	{
+		return urgent;
+	}
+
+	public void setUrgent(boolean urgent) 
+	{
+		this.urgent = urgent;
+	}
+
+	public LocalDate getDueDate() 
+	{
+		return dueDate;
+	}
+	
+	public void setDueDate(LocalDate dueDate)
+	{
+		this.dueDate = dueDate;
+	}
+	
+	public String getDescription()
+	{
+		return description;
+	}
+	
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
+	
+	public boolean isCompleted()
+	{
+		return completed;
+	}
+	
+	public void setCompleted(boolean completed)
+	{
+		this.completed = completed;
 	}
 }

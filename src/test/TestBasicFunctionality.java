@@ -16,23 +16,27 @@ import org.junit.jupiter.api.Test;
 
 import model.TodoTask;
 
-class TestBasicFunctionality {
+class TestBasicFunctionality
+{
 	private static TestHarness app;
 	private static Random random;
 
 	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+	static void setUpBeforeClass() throws Exception
+	{
 		app = new TestHarness();
 		random = new Random();
 	}
 
 	@AfterAll
-	static void tearDownAfterClass() throws Exception {
+	static void tearDownAfterClass() throws Exception 
+	{
 		app = null;
 	}
 
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp() throws Exception 
+	{
 		app.addNewTask(new TodoTask("Task1", LocalDate.now().plusDays(3), false));
 		app.addNewTask(new TodoTask("Task2", LocalDate.now().plusDays(21), false));
 		app.addNewTask(new TodoTask("Task3", LocalDate.now().plusDays(5), false));
@@ -42,7 +46,8 @@ class TestBasicFunctionality {
 	}
 
 	@AfterEach
-	void tearDown() throws Exception {
+	void tearDown() throws Exception
+	{
 		app.reset();
 	}
 
